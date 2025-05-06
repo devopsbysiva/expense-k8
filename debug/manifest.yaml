@@ -3,4 +3,7 @@ kind: pod
 metadata:
   name: debug
   project: expense
-  
+spec:
+  containers:
+  - name: debug
+    image : 
