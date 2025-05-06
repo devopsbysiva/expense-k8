@@ -1,7 +1,7 @@
 # image: promptforai/frontend:v1
 # we create depolyment with replicas as 2. tier: api,name: backend, project : expense,configMao for environment variable
-kind: Deployment 
 apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: frontend
   namespace: expense
