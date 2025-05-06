@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: expense
+  lables:
+    project: expense
+    envirnoment: dev
+    
+# kubectl apply -f namespace.yaml
+# kubectl get namespaces
+# kubectl describe namespace expense
+
