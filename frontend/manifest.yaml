@@ -1,4 +1,5 @@
-# image: promptforai/frontend:v1
+# image: promptforai/frontend:v1"
+#joindevops/frontend:v1
 # we create depolyment with replicas as 2. tier: api,name: backend, project : expense,configMao for environment variable
 apiVersion: apps/v1
 kind: Deployment
