@@ -26,6 +26,8 @@ spec:
       containers:
       - name: frontend
         image: promptforai/frontend:v1
+        securityContext:
+      runAsUser: 0
 ---
 kind: Service
 apiVersion: v1
