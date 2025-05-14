@@ -11,7 +11,7 @@ metadata:
     tier: web
     project: expense
 spec: 
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -29,6 +29,13 @@ spec:
         image: joindevops/frontend:v1
         securityContext:
           runAsUser: 0
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128 Mi
+          requests:
+            cpu: 200m
+            memory: 128 Mi
 ---
 kind: Service
 apiVersion: v1
@@ -46,4 +53,23 @@ spec:
     protocol: TCP
     port: 80 # service port
     targetPort: 80 # container port
-    
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: frontend
+  namespace: expense
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 15
